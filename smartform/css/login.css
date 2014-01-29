@@ -1,0 +1,51 @@
+body {
+	background-attachment: scroll;
+	background-color: #FFCC99;
+	background-image: url(../images/bg.jpg);
+	background-repeat: no-repeat;
+	background-position: left top;
+	margin: 0px;
+	padding: 0px;
+	}
+.bg {
+	background-attachment: scroll;
+	background-image: url(../images/loginpagebg.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	margin:0px;
+	padding: 0px;
+}
+.intext {
+	background-attachment: scroll;
+	background-image: url(../images/inputbox.png);
+	background-repeat: no-repeat;
+	background-position: left top;
+	width:250px;
+	height:27px;
+	border:1px solid #8f8d8d;
+	color:#FF9900;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:12px;
+	font-weight:700;
+	margin:5px;
+	padding:5px;
+}
+.txt {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	color: #000;
+	text-decoration: none;
+}
+.subm {
+	width:82px;
+	height:31px;
+	margin:3px;
+	padding:3px;
+	color:#666;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:12px;
+	font-weight:700;
+}

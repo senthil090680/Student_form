@@ -1,0 +1,24 @@
+   1. <html>
+   2. <head>
+   3. <title><%= Request.QueryString("image") %></title>
+   4.
+   5. <style type="text/css">
+   6. body{margin:0px; background:#fff;}
+   7. </style>
+   8.
+   9. <script language="javascript">
+  10. function readImage(){
+  11.   var image = document.getElementById("fullPic");
+  12.   window.resizeTo(image.width+20, image.height+40);
+  13. }
+  14. </script>
+  15.
+  16. </head>
+  17.
+  18. <body onload="readImage();">
+  19.
+  20. <img src="<%= Request.QueryString("image") %>" id="fullPic" onclick="self.close();"/>
+  21.
+  22. </body>
+  23. </html>
+
