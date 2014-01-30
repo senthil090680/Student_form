@@ -13,6 +13,9 @@ $fph=$_POST['fph'];
 $course=$_POST['course'];
 $ph=$_POST['ph'];
 $email=$_POST['email'];
+$doj		=		$_POST['doj'];
+	
+$doc		=		$_POST['doc'];
 $cc=$_POST['cc'];
 $ps=$_POST['ps'];
 $add=$_POST['add'];
@@ -46,7 +49,7 @@ if($file != '') {
 	$photoimage = "";
 }
 
-$a="update register_table set active='$act',name='$name',fee='$fee',fphone='$fph',course='$course',phone='$ph',email='$email',coursecomplete='$cc',placedstatus='$ps',addres='$add',note='$note',resume='$resume'".$photoimage."  where ID='$ID'";
+$a="update register_table set active='$act',name='$name',fee='$fee',fphone='$fph',course='$course',phone='$ph',email='$email',doj='$doj',doc='$doc',coursecomplete='$cc',placedstatus='$ps',addres='$add',note='$note',resume='$resume'".$photoimage."  where ID='$ID'";
  $b=mysql_query($a)or die (mysql_error());
  
 
@@ -65,7 +68,20 @@ header("location:Edit.php?err2");
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>Smart Entry - Student Form</title>
 
-
+<script src="js/jquery-1.7.2.js"></script>
+	<script src="js/jquery.ui.core.js"></script>
+	<script src="js/jquery.ui.widget.js"></script>
+	<script src="js/jquery.ui.datepicker.js"></script>
+	<link rel="stylesheet" href="css/demos.css">
+	<link rel="stylesheet" href="css/jquery.ui.all.css">
+<script>
+	$(function() {
+		$( "#doj" ).datepicker();
+	});
+	$(function() {
+		$( "#doc" ).datepicker();
+	});
+	</script>
 
 <link href="css/style.css" rel="stylesheet" type="text/css" />
 
@@ -92,7 +108,7 @@ header("location:Edit.php?err2");
 
 	 <?php 
 	  include 'include/data.php';
-	  $a="select ID,active,name,fee,fphone,course,phone,email,coursecomplete,placedstatus,photo,addres,note,resume from register_table where ID = '$_GET[id]'";
+	  $a="select ID,active,name,fee,fphone,course,phone,email,doj,doc,coursecomplete,placedstatus,photo,addres,note,resume from register_table where ID = '$_GET[id]'";
 	  $b=mysql_query($a)or die (mysql_error());
 	  $c=mysql_fetch_object($b);
 	  
@@ -102,6 +118,8 @@ header("location:Edit.php?err2");
 	  $c->course;
 	  $c->phone;
 	  $c->email;
+	  $c->doj;
+	  $c->doc;
 	  $c->coursecomplete;
 	  $c->placedstatus;
 	  $c->photo;
@@ -149,6 +167,15 @@ header("location:Edit.php?err2");
               <tr>
                 <td height="30" align="left" valign="middle" class="txts">E-Mail : </td>
                 <td align="left" valign="middle"><input type="text" name="email" size="35" value="<?php echo $c->email;?>"></td>
+              </tr>
+			   <tr>
+                <td height="30" align="left" valign="middle" class="txts">Date of Joining the Course  : </td>
+                <td align="left" valign="middle"><input type="text" name="doj" size="35" id="doj" value="<?php echo $c->doj;?>"></td>
+              </tr>
+			  
+			   <tr>
+                <td height="30" align="left" valign="middle" class="txts">Date of Completing the course  : </td>
+                <td align="left" valign="middle"><input type="text" name="doc" size="35" id="doc" value="<?php echo $c->doc;?>"></td>
               </tr>
               <tr>
                 <td height="30" align="left" valign="middle" class="txts">Course Complete : </td>

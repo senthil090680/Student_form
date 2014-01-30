@@ -79,6 +79,10 @@ if(isset($_POST['submit']) && $_POST['submit'] == 'submit') {
 	
 	$email		=		$_POST['email'];
 	
+	$doj		=		$_POST['doj'];
+	
+	$doc		=		$_POST['doc'];
+	
 	$cc			=		$_POST['cc'];
 	
 	$ps			=		$_POST['ps'];
@@ -88,7 +92,7 @@ if(isset($_POST['submit']) && $_POST['submit'] == 'submit') {
 	
 include 'include/data.php';
 
-	$query	=	"insert into register_table (active,name,course,fee,addres,phone,fphone,email,coursecomplete,placedstatus,note,resume,photo) values('$act','$name','$course','$fee','$add','$ph','$fph','$email','$cc','$ps','$note','$file_name','$file')";
+	$query	=	"insert into register_table (active,name,course,fee,addres,phone,fphone,email,doj,doc,coursecomplete,placedstatus,note,resume,photo) values('$act','$name','$course','$fee','$add','$ph','$fph','$email','$doj','$doc','$cc','$ps','$note','$file_name','$file')";
 
 	$resultset = mysql_query($query,$con)or die (mysql_error());
 	
@@ -104,8 +108,32 @@ include 'include/data.php';
 }
 
 ?>
+
+
+
+
 <?php include 'include/header.php';
 ?>
+
+<script src="js/jquery-1.7.2.js"></script>
+	<script src="js/jquery.ui.core.js"></script>
+	<script src="js/jquery.ui.widget.js"></script>
+	<script src="js/jquery.ui.datepicker.js"></script>
+	<link rel="stylesheet" href="css/demos.css">
+	<link rel="stylesheet" href="css/jquery.ui.all.css">
+<script>
+	$(function() {
+		$( "#doj" ).datepicker();
+	});
+	$(function() {
+		$( "#doc" ).datepicker();
+	});
+	</script>
+
+
+
+
+
 <script type="text/JavaScript">
 
 function cont()
@@ -185,6 +213,14 @@ alert("Please enter valid E.mail");
 return false;
 }
 
+o=document.form.doj.value;
+if(o=='')
+{
+alert("Please Enter DOJ");
+return false;
+}
+
+
 i=document.form.cc.value;
 if(i=='')
 {
@@ -237,13 +273,13 @@ return false;
         <td width="96%" align="left" valign="middle" class="topline"><span class="txt">Add New </span></td>
         <td width="2%" align="right" valign="top" class="topline"><img src="images/righttop.jpg" width="17" height="57"></td>
       </tr>
-	 <form action="" method="post" onSubmit="return cont();" name="form" enctype="multipart/form-data">
+	 <form action="data.php" method="post" onSubmit="return cont();" name="form" enctype="multipart/form-data">
       <tr>
         <td align="left" valign="top" class="lline">&nbsp;</td>
         <td align="right" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
           <tr>
-            <td width="16%" height="30" align="left" valign="middle" class="txts">Active : </td>
-            <td width="84%" align="left" valign="middle" class="txts">
+            <td width="20%" height="30" align="left" valign="middle" class="txts">Active : </td>
+            <td width="80%" align="left" valign="middle" class="txts">
               <input name="act" type="radio" value="yes">Yes
 			  <input name="act" type="radio" value="no"> 
 			  No           </td>
@@ -276,6 +312,14 @@ return false;
           <tr>
             <td height="30" align="left" valign="middle" class="txts">E-Mail : </td>
             <td align="left" valign="middle"><input type="text" name="email" size="35"></td>
+          </tr>
+		  <tr>
+            <td height="30" align="left" valign="middle" class="txts">Date of Joining the Course : </td>
+            <td align="left" valign="middle"><input type="text" name="doj" size="35" id="doj"/></td>
+          </tr>
+		   <tr>
+            <td height="30" align="left" valign="middle" class="txts">Date of Completing the course : </td>
+            <td align="left" valign="middle"><input type="text" name="doc" size="35" id="doc"/></td>
           </tr>
           <tr>
             <td height="30" align="left" valign="middle" class="txts">Course Complete : </td>

@@ -1,7 +1,6 @@
 <?php
-
+ob_start();
 //echo "ewrwer";
-
 ini_set("display_errors",true);
 error_reporting(E_ALL);
 if((isset($_POST['uname']) && $_POST['uname'] != '') && (isset($_POST['pword']) && $_POST['pword'] != '')) {
